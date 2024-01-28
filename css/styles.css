@@ -23,8 +23,6 @@ body {
     font-size: 1rem;
 }
 
-.ul {}
-
 .li {
     list-style: none;
     padding: 5px;
@@ -147,7 +145,7 @@ body {
     height: 200px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 100px);
+    grid-template-rows: repeat(2, 1fr);
     overflow: hidden;
     gap: 13px;
     background-color: var(--color1);

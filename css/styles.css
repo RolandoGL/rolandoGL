@@ -1,14 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&family=Unica+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Unica+One&display=swap');
 :root {
     --main-color: #23282E;
     --secondary-color: #000000;
     --accent-primary-color: #00FFE3;
     --accent-secondary-color: #636260;
-    --color1: #a3f5ec99;
+    --color1: #F5F5F7;
     --color2: #f7f7fc;
-}
-
-:root {
-    --main-bg-color: brown;
 }
 
 * {
@@ -21,6 +19,20 @@ body {
     width: 100vwh;
     height: 100vh;
     font-size: 1rem;
+}
+
+.body-font{
+    font-family: 'Pixelify Sans', sans-serif;
+}
+
+.title-font{
+    font-family: 'Unica One', sans-serif;
+}
+.container{
+    width: auto;
+    margin: auto;
+    padding: 30px;
+    background-color: var(--color1);
 }
 
 .li {
@@ -62,6 +74,7 @@ body {
     position: absolute;
     top: 5px;
     right: 10px;
+    font-size: 1rem;
 }
 
 .text-h1 {
@@ -96,6 +109,7 @@ body {
 
 .header-description {
     padding: 4px;
+    font-size: 1.rem;
 }
 
 .navbar {
@@ -104,7 +118,6 @@ body {
 }
 
 .navbar-container {
-
     display: flex;
     padding: 15px 5px 15px 5px;
     justify-content: center;
@@ -115,6 +128,7 @@ body {
 
 .navbar-item {
     list-style: none;
+    font-size: .9rem;
 }
 
 .navbar-link {
@@ -123,7 +137,7 @@ body {
 
 .projects-container h3 {
     font-size: 2.2rem;
-    margin-left: 15pxs;
+    margin-left: 15px;
 }
 
 .card {
@@ -224,6 +238,15 @@ details[open] summary::before {
     animation: rotate-emoji 0.6s ease-in-out both;
 }
 
+.habilities-container{
+    display: flex;
+    gap: 15px;
+    margin: 10px;
+}
+
+.habilities-container > ul{
+    font-size: 1.1rem;
+}
 
 @-webkit-keyframes rotate-emoji {
     0% {
@@ -251,6 +274,10 @@ details[open] summary::before {
         justify-content: space-evenly;
     }
 
+    .navbar-item {
+        font-size: 1rem;
+    }
+    
     .card {
         display: flex;
     }
@@ -276,8 +303,8 @@ details[open] summary::before {
 
 @media screen and (min-width:992px) {
     .header-container {
-        font-size: 1.3rem;
-        width: 1200px;
+        font-size: 1.5rem;
+        width: 1000px;
         margin: auto;
         padding: 40px;
     }
@@ -306,5 +333,9 @@ details[open] summary::before {
         padding: 30px;
         width: 1000px;
         margin: auto;
+    }
+
+    .container{
+        width: 1000px;
     }
 }

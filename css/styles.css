@@ -1,12 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&family=Unica+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Unica+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,100..900&family=Poppins:ital,wght@0,400;0,500;1,500&display=swap');
 :root {
     --main-color: #23282E;
+    --dark-color-1: #191919;
+    --dark-color-2: #000000;
     --secondary-color: #000000;
     --accent-primary-color: #00FFE3;
     --accent-secondary-color: #636260;
     --color1: #F5F5F7;
     --color2: #f7f7fc;
+    color-scheme: light dark;
 }
 
 * {
@@ -16,23 +19,124 @@
 }
 
 body {
-    width: 100vwh;
-    height: 100vh;
     font-size: 1rem;
+    transition: all 300ms ease;
 }
 
-.body-font{
+html::-webkit-scrollbar {
+    height: 0px;
+    width: 7px;
+    border-radius: 5px;
+}
+
+html::-webkit-scrollbar-track {
+    background: var(--color2);
+}
+
+html::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+}
+
+html::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-secondary-color);
+}
+
+.zoom-effect,
+.hover-effect {
+    transition: all 400ms ease;
+    position: relative;
+}
+
+.hover-effect:hover {
+    z-index: 3;
+    /* transform: scale(1.1); */
+    /* background-color: var(--accent-primary-color); */
+    /* padding: 8px; */
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    position: absolute;
+    width: 105%;
+    height: 105%;
+    border: 3px solid light-dark(#000000, #ffffff);
+    top: 0;
+    left: -12px;
+    box-shadow: 0 0 5px 1px white;
+    background-color: var(--color1);
+    object-position: unset;
+}
+.hover-effect:hover>img{
+    object-position: left;
+
+}
+.zoom-effect:hover {
+    transform: scale(1.1);
+    color: var(--main-color);
+    background-color: var(--color1);
+    border: 1px solid white;
+    box-shadow: 0 0 3px 1px white;
+
+}
+
+.glass-effect {
+    transition: all 600ms ease;
+}
+
+.glass-effect {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff51;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid white;
+    z-index: 2;
+}
+
+
+.body-font {
+    
+    font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.animated-scroll{
+    position: relative;
+    view-timeline: --image;
+    view-timeline-axis: block;
+    animation-timeline: --image;
+    animation-name: show;
+    animation-range: entry 25% cover 50%;
+    animation-fill-mode: both;
+}
+@keyframes show {
+    from{
+        opacity: 0;
+    }
+
+    to{
+        opacity: 1;
+    }
+}
+.title-font {
     font-family: 'Pixelify Sans', sans-serif;
 }
-
-.title-font{
-    font-family: 'Unica One', sans-serif;
+.d-flex{
+    display: flex;
+    flex-wrap: wrap;
 }
-.container{
+.flex-column{
+    flex-direction: column;
+}
+.d-flex > h2{
+    width: 100%;
+}
+.container {
     width: auto;
     margin: auto;
     padding: 30px;
-    background-color: var(--color1);
+    background-color: light-dark(var(--color1), var(--dark-color-1));
 }
 
 .li {
@@ -51,6 +155,8 @@ body {
 .link {
     text-decoration: none;
     color: var(--secondary-color);
+    border-radius: 7px;
+    padding: 5px;
 }
 
 .btn {
@@ -82,8 +188,9 @@ body {
 }
 
 .header {
-    background-color: var(--main-color);
+    background-color: light-dark(var(--main-color), var(--dark-color-2));
     position: relative;
+
 }
 
 .header-container {
@@ -113,14 +220,20 @@ body {
 }
 
 .navbar {
-    background-color: var(--color2);
+    /* background-color: var(--color2); */
+    background-color: light-dark(var(--color2), var(--dark-color-2));
     border-bottom: 2.3px solid var(--main-color);
 }
+.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 100000;
+  }
 
 .navbar-container {
     display: flex;
     padding: 15px 5px 15px 5px;
-    justify-content: center;
+    justify-content: space-around;
     gap: 5px;
     overflow-x: scroll;
     flex-wrap: nowrap;
@@ -133,6 +246,7 @@ body {
 
 .navbar-link {
     text-wrap: nowrap;
+    color: light-dark(var(--secondary-color), var(--color2));
 }
 
 .projects-container h3 {
@@ -155,18 +269,23 @@ body {
 .card-image {
     padding: 5px;
     margin: auto;
-    width: 200px;
-    height: 200px;
+    /* width: 200px; */
+    height: 230px;
+    max-width: 90%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    overflow: hidden;
+    /* overflow: hidden; */
     gap: 13px;
     background-color: var(--color1);
+    position: relative;
+}
+
+.hover-effect:hover~.glass-effect {
+    display: block;
 }
 
 .image-container {
-
     margin: auto;
     width: 100%;
     height: 100%;
@@ -193,7 +312,7 @@ body {
 }
 
 .knowledge-item {
-    color: var(--accent-primary-color);
+    /* color: var(--accent-primary-color); */
     font-size: 1.4rem;
     padding: 10px;
     margin: 10px 0 10px 0;
@@ -238,13 +357,13 @@ details[open] summary::before {
     animation: rotate-emoji 0.6s ease-in-out both;
 }
 
-.habilities-container{
+.habilities-container {
     display: flex;
     gap: 15px;
     margin: 10px;
 }
 
-.habilities-container > ul{
+.habilities-container>ul {
     font-size: 1.1rem;
 }
 
@@ -277,7 +396,7 @@ details[open] summary::before {
     .navbar-item {
         font-size: 1rem;
     }
-    
+
     .card {
         display: flex;
     }
@@ -285,7 +404,7 @@ details[open] summary::before {
     .card-image {
         width: 300px;
         height: 300px;
-        grid-template-rows: repeat(2, 150px);
+        grid-template-rows: repeat(2, 1fr);
     }
 
     details summary::before {
@@ -300,7 +419,12 @@ details[open] summary::before {
         font-size: 1.7rem;
     }
 }
-
+.projects-container{
+    background-color: light-dark(var(--color2), var(--dark-color-1));
+    border-radius: 10px 10px 0 0 ;
+    margin-top: 15px;
+    padding: 10px;
+}
 @media screen and (min-width:992px) {
     .header-container {
         font-size: 1.5rem;
@@ -317,7 +441,7 @@ details[open] summary::before {
 
     .projects-container {
         width: 1000px;
-        margin: auto;
+        margin: 15px auto 0 auto;
     }
 
     .card-image {
@@ -325,7 +449,7 @@ details[open] summary::before {
     }
 
     .knowledge-item {
-        width: 1000px;
+        /* width: 1000px; */
         margin: auto;
     }
 
@@ -335,7 +459,7 @@ details[open] summary::before {
         margin: auto;
     }
 
-    .container{
+    .container {
         width: 1000px;
     }
 }
